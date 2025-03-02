@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Anniversary Wishes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fce4ec, #e8f5e9, #f3e5f5);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #c2185b;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.6em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .header-sub {
+            font-size: 1.2em;
+            color: #888;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .header-heart {
+            color: #c2185b;
+            font-size: 1.5em;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .header-card {
+            background: #fff;
+            border: 2px dashed #c2185b;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 300px;
+            margin: 20px auto 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .header-card h3 {
+            color: #c2185b;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .header-card p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .header-card::before {
+            content: '💞';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5em;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease, opacity 0.5s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.02);
+        }
+
+        .heart {
+            color: #c2185b;
+            font-size: 1.2em;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .carousel:hover {
+            transform: scale(1.02);
+        }
+
+        .carousel-slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-radius: 10px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: #c2185b;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 0 10px rgba(194, 24, 91, 0.7);
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #c2185b;
+            color: white;
+            width: 100%;
+            margin-top: 30px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Heart Shower Styles */
+        .heart-shower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: #c2185b;
+            font-size: 1.5em;
+            animation: fall 3s linear forwards;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Scrolling Heart Flow Styles */
+        .scroll-heart {
+            position: fixed;
+            color: #c2185b;
+            font-size: 1.5em;
+            animation: flowUp 2s ease-out forwards;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes flowUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(180deg); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .card, .carousel {
+                max-width: 100%;
+                height: 200px;
+            }
+            .header-heart {
+                font-size: 1.2em;
+                top: 5px;
+                right: 10px;
+            }
+            .header-card {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Happy Anniversary Mama & Mami!</h1>
+        <h2>A Special Gift for 5 Years of Love</h2>
+        <p class="header-sub">Celebrating Your Endless Love and Joyful Moments</p>
+        <span class="header-heart">❤️</span>
+        <div class="header-card">
+            <h3>5th Anniversary Milestone</h3>
+            <p>A testament to your unbreakable bond and timeless love!</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Carousel Section -->
+        <div class="carousel">
+            <div class="carousel-slides">
+                <img src="./pic1.jpg" alt="Photo 1">
+                <img src="./pic2.jpg" alt="Photo 2">
+                <img src="./pic3.jpg" alt="Photo 3">
+                <img src="./pic4.jpg" alt="Photo 4">
+                <img src="./pic5.jpg" alt="Photo 5">
+                <img src="./pic6.jpg" alt="Photo 6">
+                <img src="./pic7.jpg" alt="Photo 7">
+                <img src="./pic8.jpg" alt="Photo 8">
+            </div>
+            <button class="carousel-btn prev-btn">❮</button>
+            <button class="carousel-btn next-btn">❯</button>
+        </div>
+
+        <div class="card">
+            <img src="./pic2.jpg" alt="Couple Photo">
+            <h3>To Aman Uncle & Komal Aunty</h3>
+            <p>Here’s to celebrating your beautiful journey together! Your love inspires us all, and this little digital gift is a token of our admiration for you both. <span class="heart">❤️</span></p>
+        </div>
+
+        <div class="card">
+            <img src="./pic1.jpg" alt="Love Story">
+            <h3>Your Love Story</h3>
+            <p>Since 02-March-2020, you’ve built a life full of laughter, strength, and endless love. May every year ahead be as magical as the ones you’ve shared!</p>
+        </div>
+
+        <div class="card">
+            <img src="./wishes.webp" alt="Wishes">
+            <h3>Our Wishes</h3>
+            <p>Wishing you countless more moments of joy, adventures, and togetherness. Happy 5th Anniversary from the bottom of our hearts! <span class="heart">❤️</span></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with Love for Aman Uncle & Komal Aunty | Your Nephew, 2025</p>
+    </footer>
+
+    <div class="heart-shower" id="heartShower"></div>
+
+    <script>
+        // Smooth scroll reveal effect for cards
+        const cards = document.querySelectorAll('.card');
+        const revealCards = () => {
+            cards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (cardTop < windowHeight - 50) {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 200);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealCards);
+        window.addEventListener('load', revealCards);
+
+        // Carousel functionality
+        const slides = document.querySelector('.carousel-slides');
+        const images = document.querySelectorAll('.carousel-slides img');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const slideWidth = images[0].clientWidth;
+            slides.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateCarousel();
+        });
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        }, 5000);
+
+        window.addEventListener('resize', updateCarousel);
+        window.addEventListener('load', updateCarousel);
+
+        // Heart Shower Effect on First Visit
+        const heartShower = document.getElementById('heartShower');
+        function createHeartShower() {
+            if (!localStorage.getItem('visited')) {
+                for (let i = 0; i < 30; i++) {
+                    const heart = document.createElement('span');
+                    heart.classList.add('heart-particle');
+                    heart.textContent = '❤️';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                    heartShower.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 3000);
+                }
+                localStorage.setItem('visited', 'true');
+            }
+        }
+
+        window.addEventListener('load', createHeartShower);
+
+        // Scrolling Heart Flow Effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) { // Scrolling down
+                if (Math.random() < 0.1) { // 10% chance to spawn a heart per scroll event
+                    const heart = document.createElement('span');
+                    heart.classList.add('scroll-heart');
+                    heart.textContent = '❤️';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.bottom = '0';
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2000); // Remove after animation
+                }
+            }
+            if (scrollTop > lastScrollTop) { // Scrolling down
+                if (Math.random() < 0.1) { // 10% chance to spawn a heart per scroll event
+                    const heart = document.createElement('span');
+                    heart.classList.add('scroll-heart');
+                    heart.textContent = '❤️';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.bottom = '0';
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2000); // Remove after animation
+                }
+            }
+            if (scrollTop > lastScrollTop) { // Scrolling down
+                if (Math.random() < 0.1) { // 10% chance to spawn a heart per scroll event
+                    const heart = document.createElement('span');
+                    heart.classList.add('scroll-heart');
+                    heart.textContent = '❤️';
+                    heart.style.left = `${Math.random() * 100}vw`;
+                    heart.style.bottom = '0';
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2000); // Remove after animation
+                }
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Handle bounce back
+        });
+    </script>
+</body>
+</html>
